@@ -1,0 +1,4 @@
+.wrapper {
+  width: min(1000px, 98%);
+  margin: 0 auto;
+}

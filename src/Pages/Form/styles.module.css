@@ -1,0 +1,93 @@
+.main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.form {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 20px;
+  width: min(400px, 100%);
+  background-color: hsla(215, 100%, 70%, 0.3);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.formControl {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.formControl > span {
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.formControl > input,
+.formControl > textarea {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid #ccc;
+  outline: none;
+  background-color: #fff;
+  font-size: 1rem;
+  padding: 0.3rem;
+  transition: all 300ms linear;
+}
+
+.formControl > input:focus,
+.formControl > textarea:focus {
+  border-color: hsl(260, 100%, 56%);
+  border-radius: 5px;
+}
+
+.formControl > textarea {
+  resize: none;
+  overflow-y: auto;
+  height: 100px;
+}
+
+.btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 5px;
+  background: #fff;
+  outline: 2px solid #000;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 2rem;
+  align-self: center;
+  position: relative;
+  isolation: isolate;
+  transition: color 350ms linear;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-color: #000;
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 500ms linear;
+}
+
+.btn:hover {
+  color: #fff;
+}
+
+.btn:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}

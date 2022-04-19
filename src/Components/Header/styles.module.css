@@ -1,0 +1,54 @@
+.header {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  margin-bottom: 10px !important;
+}
+
+.logo {
+  font-weight: 500;
+  text-decoration: 2px solid underline;
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.link {
+  text-decoration: none;
+  color: hsl(0, 100%, 0%, 0.5);
+  position: relative;
+  transition: color 250ms linear;
+}
+
+.link:hover,
+.link.active {
+  color: hsl(0, 100%, 0%);
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, dodgerblue 0%, dodgerblue 50%, chartreuse 50%, chartreuse 100%);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 350ms linear;
+}
+
+.link:hover::after {
+  transform: scaleX(1);
+}
+
+.link.active::after {
+  transform: scaleX(0.6);
+}
