@@ -9,38 +9,36 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 // Utility Function
-import getWeekNumber from "../../Utilities/getWeekNumber";
+import { getMonthFromNumber, getWeekNumber } from "../../Utilities/date";
 
 const Listing = () => {
   const {
     notes,
-    filters: { filter, sort },
+    filters: { filter, sort, subFilter },
   } = useSelector((state) => state);
   const [filteredNotes, setFilteredNotes] = useState([]);
 
   // Apply Filter Whenever Notes or Filters are changed
   useEffect(() => {
     let filtered = notes;
+
+    // Filtering
+    if (filter === "year") {
+      filtered = notes.filter((note) => note.date.getFullYear().toString() === subFilter);
+    } else if (filter === "month") {
+      filtered = notes.filter((note) => getMonthFromNumber(note.date.getMonth()) === subFilter);
+    } else if (filter === "week") {
+      filtered = notes.filter((note) => getWeekNumber(note.date).toString() === subFilter);
+    }
+
+    // Sorting
+    filtered = filtered.sort((note1, note2) => note1.date - note2.date);
     if (sort === "new") {
-      if (filter === "year") {
-        filtered = notes.sort((note1, note2) => note2.date.getFullYear() - note1.date.getFullYear());
-      } else if (filter === "month") {
-        filtered = notes.sort((note1, note2) => note2.date.getMonth() - note1.date.getMonth());
-      } else if (filter === "week") {
-        filtered = notes.sort((note1, note2) => getWeekNumber(note2.date) - getWeekNumber(note1.date));
-      }
-    } else {
-      if (filter === "year") {
-        filtered = notes.sort((note1, note2) => note1.date.getFullYear() - note2.date.getFullYear());
-      } else if (filter === "month") {
-        filtered = notes.sort((note1, note2) => note1.date.getMonth() - note2.date.getMonth());
-      } else if (filter === "week") {
-        filtered = notes.sort((note1, note2) => getWeekNumber(note1.date) - getWeekNumber(note2.date));
-      }
+      filtered = filtered.reverse();
     }
 
     setFilteredNotes(filtered);
-  }, [notes, filter, sort]);
+  }, [notes, filter, sort, subFilter]);
 
   return (
     <div className={style.listing}>

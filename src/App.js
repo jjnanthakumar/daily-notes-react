@@ -11,6 +11,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 const App = () => {
   const notes = useSelector((state) => state.notes);
+
   // Store Updated Notes in LocalStorage
   useEffect(() => {
     localStorage.setItem("NOTES", JSON.stringify(notes));

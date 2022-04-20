@@ -15,6 +15,7 @@ const notesReducer = (state, action) => {
     case NOTE_ACTION_TYPES.EDIT_NOTE: {
       const index = state.findIndex((note) => note.id === payload.id);
       state[index] = payload;
+      localStorage.setItem("NOTES", JSON.stringify(state));
       return state;
     }
     default: {

@@ -4,19 +4,20 @@
   justify-content: space-between;
 }
 
-.section {
+.section,
+.inputGroup {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
 }
 
-.section > h3 {
+.inputGroup > h3 {
   font-weight: 300;
   font-size: 1.2rem;
 }
 
-.section > select {
+.inputGroup > select {
   border: none;
   outline: 1px solid black;
   background-color: #fff;
@@ -26,6 +27,38 @@
   position: relative;
 }
 
-.section > select::after {
-  content: "Shivi";
+.btn {
+  appearance: none;
+  border: none;
+  background-color: #fff;
+  outline: 2px solid #000;
+  font-size: 1rem;
+  padding: 0.1rem 0.5rem;
+  cursor: pointer;
+  position: relative;
+  isolation: isolate;
+  transition: color 300ms linear;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 450ms linear;
+}
+
+.btn:hover {
+  color: #fff;
+}
+
+.btn:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
 }
