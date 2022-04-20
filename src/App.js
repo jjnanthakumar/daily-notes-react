@@ -1,10 +1,21 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+// Components
 import Header from "./Components/Header";
-import Form from "./Pages/Form";
 import Home from "./Pages/Home";
+import Form from "./Pages/Form";
 import NotFound from "./Pages/NotFound";
 
+// Hooks
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Navigate, Route, Routes } from "react-router-dom";
+
 const App = () => {
+  const notes = useSelector((state) => state.notes);
+  // Store Updated Notes in LocalStorage
+  useEffect(() => {
+    localStorage.setItem("NOTES", JSON.stringify(notes));
+  }, [notes]);
+
   return (
     <>
       <Header />

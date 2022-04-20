@@ -8,6 +8,26 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /*  For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #333;
+  scroll-behavior: smooth;
+}
+
+/* Scroll Bar Style For Chromium Based Browsers */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 20px;
+  outline: 1px solid black;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 20px;
 }
 
 html,
