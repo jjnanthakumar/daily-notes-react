@@ -1,17 +1,13 @@
-import style from "./styles.module.css";
+import { Container, Info, Title } from "./styledComponents";
 
 const NotFound = () => {
   return (
-    <main className={style.main}>
+    <Container>
       <div>
-        <h2 className={style.title} data-content="404">
-          404
-        </h2>
-        <p className={style.info} data-content="PAGE NOT FOUND">
-          Page Not Found
-        </p>
+        <Title content="404">404</Title>
+        <Info content="Page Not Found">Page Not Found</Info>
       </div>
-    </main>
+    </Container>
   );
 };
 

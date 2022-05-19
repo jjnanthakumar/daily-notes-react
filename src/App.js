@@ -1,3 +1,6 @@
+// Styled Components
+import { Root } from "./styledComponents";
+
 // Components
 import Header from "./Components/Header";
 import Home from "./Pages/Home";
@@ -18,7 +21,7 @@ const App = () => {
   }, [notes]);
 
   return (
-    <>
+    <Root>
       <Header />
 
       <Routes>
@@ -32,7 +35,7 @@ const App = () => {
 
         <Route path="/*" element={<Navigate to="/not-found" replace={true} />} />
       </Routes>
-    </>
+    </Root>
   );
 };
 

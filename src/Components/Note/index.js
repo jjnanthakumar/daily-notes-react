@@ -1,9 +1,9 @@
-// Styling
-import style from "./styles.module.css";
+// Styled Components
+import { Actions, Body, Button, Container, Desc, Head, Info } from "./styledComponents";
 
 // Icons
-import Edit from "../../Assets/pencil-circle-outline.svg";
-import Delete from "../../Assets/delete-circle-outline.svg";
+import { ReactComponent as Edit } from "../../Assets/pencil-circle-outline.svg";
+import { ReactComponent as Delete } from "../../Assets/delete-circle-outline.svg";
 
 // Hooks
 import { useNavigate } from "react-router-dom";
@@ -25,22 +25,25 @@ const Note = ({ id, text, date }) => {
   };
 
   return (
-    <div className={style.container}>
-      <p className={style.text}>{text}</p>
+    <Container>
+      <Head>
+        <Info>{date.toDateString()}</Info>
 
-      <div className={style.bottom}>
-        <span className={style.date}>{date.toDateString()}</span>
-        <div className={style.actions}>
-          <button className={style.btn} onClick={editNote}>
-            <img src={Edit} alt="Edit Note" title="Edit Note" />
-          </button>
+        <Actions>
+          <Button title="Edit Note" onClick={editNote}>
+            <Edit />
+          </Button>
 
-          <button className={style.btn} onClick={deleteNote}>
-            <img src={Delete} alt="Delete Note" title="Delete Note" />
-          </button>
-        </div>
-      </div>
-    </div>
+          <Button title="Delete Note" onClick={deleteNote}>
+            <Delete />
+          </Button>
+        </Actions>
+      </Head>
+
+      <Body>
+        <Desc>{text}</Desc>
+      </Body>
+    </Container>
   );
 };
 

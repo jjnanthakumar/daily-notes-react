@@ -30,6 +30,20 @@
   border-radius: 20px;
 }
 
+/* Site Level Variables */
+:root {
+  --primary-color: rgb(33, 150, 243);
+  --secondary-color: rgb(76, 175, 80);
+  --white: #fff;
+  --background: #f9f9f9;
+  --text-dark: rgba(0, 0, 0, 0.87);
+  --text-light: rgba(0, 0, 0, 0.54);
+  --grey: #ccc;
+  --box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  --box-shadow-hover: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  --section-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
 html,
 body,
 #root {
@@ -40,9 +54,4 @@ html {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-#root {
-  display: grid;
-  grid-template-rows: auto 1fr;
 }

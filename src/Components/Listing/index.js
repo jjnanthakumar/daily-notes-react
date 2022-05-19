@@ -1,5 +1,5 @@
-// Styling
-import style from "./styles.module.css";
+// Styled Components
+import { Container } from "./styledComponents";
 
 // Components
 import Note from "../Note";
@@ -10,6 +10,15 @@ import { useEffect, useState } from "react";
 
 // Utility Function
 import { getMonthFromNumber, getWeekNumber } from "../../Utilities/date";
+
+// Masonry for Dynamic Grid Based on Viewport Size
+import Masonry from "react-masonry-css";
+
+const masonryBreakPoints = {
+  default: 3,
+  700: 2,
+  500: 1,
+};
 
 const Listing = () => {
   const {
@@ -41,11 +50,13 @@ const Listing = () => {
   }, [notes, filter, sort, subFilter]);
 
   return (
-    <div className={style.listing}>
-      {filteredNotes.map((item) => (
-        <Note key={item.id} {...item} />
-      ))}
-    </div>
+    <Container>
+      <Masonry breakpointCols={masonryBreakPoints} className="listing" columnClassName="listing-column">
+        {filteredNotes.map((item) => (
+          <Note key={item.id} {...item} />
+        ))}
+      </Masonry>
+    </Container>
   );
 };
 

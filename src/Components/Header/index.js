@@ -1,33 +1,53 @@
-// Styles
-import style from "./styles.module.css";
-import commonStyle from "../../Common.module.css";
+// Styled Components
+import { Brand, Container, Link, Logo, Nav, Toggle } from "./styledComponents";
 
-// React Router Hooks & Components
-import { NavLink, useNavigate } from "react-router-dom";
+// Icons
+import { ReactComponent as NotesIcon } from "../../Assets/format-list-text.svg";
+import { ReactComponent as CreateIcon } from "../../Assets/playlist-plus.svg";
+
+// Hooks
+import { useEffect, useState } from "react";
+
+// Media Query Hook
+import useMediaQuery from "../../Utilities/useMediaQuery";
 
 const Header = () => {
-  const navigate = useNavigate();
-  const getLinkClass = ({ isActive }) => `${style.link} ${isActive ? style.active : ""}`;
-  const gotoHome = () => {
-    navigate("/");
+  const mediaMatches = useMediaQuery("(max-width: 500px)");
+  const [isOpen, setOpen] = useState(true);
+
+  useEffect(() => {
+    // Close Menu for Smaller Viewport
+    if (mediaMatches) {
+      setOpen(false);
+    }
+  }, [mediaMatches]);
+
+  const toggle = () => {
+    setOpen((prev) => !prev);
   };
 
   return (
-    <header className={`${style.header} ${commonStyle.wrapper}`}>
-      <h1 className={style.logo} onClick={gotoHome}>
-        Daily Notes
-      </h1>
+    <Container isOpen={isOpen}>
+      <Logo>
+        <Toggle onClick={toggle} isOpen={isOpen} title={`${isOpen ? "Close" : "Open"} Menu`}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </Toggle>
 
-      <nav className={style.nav}>
-        <NavLink to={"/"} className={getLinkClass}>
-          All Notes
-        </NavLink>
+        {isOpen && <Brand>Daily Notes</Brand>}
+      </Logo>
 
-        <NavLink to={"/new"} className={getLinkClass}>
-          New Note
-        </NavLink>
-      </nav>
-    </header>
+      <Nav>
+        <Link to={"/"} title="Notes">
+          <NotesIcon fill="currentColor" /> {isOpen && <span>Notes</span>}
+        </Link>
+
+        <Link to={"/new"} title="Create Note">
+          <CreateIcon fill="currentColor" /> {isOpen && <span>Create Note</span>}
+        </Link>
+      </Nav>
+    </Container>
   );
 };
 

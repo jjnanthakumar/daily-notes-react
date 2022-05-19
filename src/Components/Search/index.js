@@ -1,5 +1,5 @@
-// Styling
-import style from "./styles.module.css";
+// Styled Components
+import { Button, Container, InputGroup, Section, Select, Title } from "./styledComponents";
 
 // Hooks
 import { useDispatch, useSelector } from "react-redux";
@@ -65,51 +65,53 @@ const Search = () => {
   };
 
   return (
-    <div className={style.container}>
-      <div className={style.section}>
-        <div className={style.inputGroup}>
-          <h3>Sort:</h3>
-
-          <select value={sort} onChange={handleChangeSort}>
+    <Container>
+      <Section>
+        <InputGroup>
+          <Title>Sort:</Title>
+          <Select value={sort} onChange={handleChangeSort}>
             <option value="new">Newest First</option>
             <option value="old">Oldest First</option>
-          </select>
-        </div>
+          </Select>
+        </InputGroup>
 
-        <div className={style.inputGroup}>
-          <h3>Filter:</h3>
+        <InputGroup>
+          <Title>Filter:</Title>
 
-          <select value={filter} onChange={handleChangeFilter}>
+          <Select value={filter} onChange={handleChangeFilter}>
             <option value="all">All</option>
             <option value="week">Week</option>
             <option value="month">Month</option>
             <option value="year">Year</option>
-          </select>
+          </Select>
 
           {filterOptions.length === 0 ? (
-            <></>
+            <Select value="" disabled>
+              <option value="">Select a Filter</option>
+            </Select>
           ) : (
-            <select value={subFilter} onChange={handleChangeSubFilter}>
+            <Select value={subFilter} onChange={handleChangeSubFilter}>
               <option value="">Select {filter.toUpperCase()}</option>
               {filterOptions.map((opt, index) => (
                 <option value={opt} key={index}>
                   {opt}
                 </option>
               ))}
-            </select>
+            </Select>
           )}
-        </div>
-      </div>
+        </InputGroup>
+      </Section>
 
-      <div className={style.section}>
-        <button type="button" className={style.btn} onClick={handleApply}>
+      <Section>
+        <Button type="button" onClick={handleApply}>
           Apply
-        </button>
-        <button type="button" className={style.btn} onClick={handleReset}>
+        </Button>
+
+        <Button type="button" onClick={handleReset}>
           Reset
-        </button>
-      </div>
-    </div>
+        </Button>
+      </Section>
+    </Container>
   );
 };
 

@@ -1,6 +1,5 @@
-// Styling
-import style from "./styles.module.css";
-import commonStyle from "../../Common.module.css";
+// Styled Components
+import { Button, Container, ControlTitle, FormControl, Input, StyledForm, Textarea, Title } from "./styledComponents";
 
 // UUID for generating unique Note ID
 import { v4 as uuid } from "uuid";
@@ -56,6 +55,10 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (noteText === "") {
+      return;
+    }
+
     const note = { text: noteText, date: new Date(noteDate) };
     setNoteText("");
     setNoteDate("");
@@ -74,21 +77,25 @@ const Form = () => {
   };
 
   return (
-    <main className={`${style.main} ${commonStyle.wrapper}`}>
-      <form className={style.form} onSubmit={handleSubmit}>
-        <label className={style.formControl}>
-          <span>Note/Reminder/Tasks</span>
-          <textarea required onChange={handleTextChange} value={noteText}></textarea>
-        </label>
-        <label className={style.formControl}>
-          <span>Date</span>
-          <input type="date" required value={noteDate} onChange={handleDateChange} />
-        </label>
-        <button className={style.btn} type="submit">
-          {id !== undefined && pathname.startsWith("/edit/") ? "Edit" : "Add"} Note
-        </button>
-      </form>
-    </main>
+    <>
+      <Container>
+        <Title>{noteText === "" ? "Create New Note" : "Update Note"}</Title>
+
+        <StyledForm onSubmit={handleSubmit}>
+          <FormControl>
+            <ControlTitle>Note</ControlTitle>
+            <Textarea required onChange={handleTextChange} value={noteText}></Textarea>
+          </FormControl>
+
+          <FormControl>
+            <ControlTitle>Date</ControlTitle>
+            <Input type="date" required value={noteDate} onChange={handleDateChange} />
+          </FormControl>
+
+          <Button type="submit">{id !== undefined && pathname.startsWith("/edit/") ? "Edit" : "Add"} Note</Button>
+        </StyledForm>
+      </Container>
+    </>
   );
 };
 
