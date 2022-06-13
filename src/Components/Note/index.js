@@ -10,9 +10,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 // Action Creators
-import { removeNote } from "../../Redux/Notes/ActionCreators";
+// import { removeNote } from "../../Redux/Notes/actions/notes";
 
-const Note = ({ id, text, date }) => {
+const Note = ({ id, note, date }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,13 +21,13 @@ const Note = ({ id, text, date }) => {
   };
 
   const deleteNote = () => {
-    dispatch(removeNote(id));
+    // dispatch(removeNote(id));
   };
 
   return (
     <Container>
       <Head>
-        <Info>{date.toDateString()}</Info>
+        <Info>{new Date(date).toDateString()}</Info>
 
         <Actions>
           <Button title="Edit Note" onClick={editNote}>
@@ -41,7 +41,7 @@ const Note = ({ id, text, date }) => {
       </Head>
 
       <Body>
-        <Desc>{text}</Desc>
+        <Desc>{note}</Desc>
       </Body>
     </Container>
   );

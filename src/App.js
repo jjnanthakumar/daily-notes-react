@@ -9,16 +9,21 @@ import NotFound from "./Pages/NotFound";
 
 // Hooks
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { getNotes } from "./Redux/Notes/actions/notes";
 
 const App = () => {
-  const notes = useSelector((state) => state.notes);
-
-  // Store Updated Notes in LocalStorage
+  const dispatch = useDispatch();
   useEffect(() => {
-    localStorage.setItem("NOTES", JSON.stringify(notes));
-  }, [notes]);
+    dispatch(getNotes());
+  }, [dispatch])
+  // const notes = useSelector((state) => state.notes);
+
+  // // Store Updated Notes in LocalStorage
+  // useEffect(() => {
+  //   localStorage.setItem("NOTES", JSON.stringify(notes));
+  // }, [notes]);
 
   return (
     <Root>

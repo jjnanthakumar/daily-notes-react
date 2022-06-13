@@ -30,14 +30,13 @@ const Listing = () => {
   // Apply Filter Whenever Notes or Filters are changed
   useEffect(() => {
     let filtered = notes;
-
     // Filtering
     if (filter === "year") {
-      filtered = notes.filter((note) => note.date.getFullYear().toString() === subFilter);
+      filtered = notes.filter((note) => new Date(note.date).getFullYear().toString() === subFilter);
     } else if (filter === "month") {
-      filtered = notes.filter((note) => getMonthFromNumber(note.date.getMonth()) === subFilter);
+      filtered = notes.filter((note) => getMonthFromNumber(new Date(note.date).getMonth()) === subFilter);
     } else if (filter === "week") {
-      filtered = notes.filter((note) => getWeekNumber(note.date).toString() === subFilter);
+      filtered = notes.filter((note) => getWeekNumber(new Date(note.date).toString()) === subFilter);
     }
 
     // Sorting

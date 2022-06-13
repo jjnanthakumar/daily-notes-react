@@ -4,11 +4,15 @@ import { Container, Info, StyledLink } from "./styledComponents";
 // Components
 import Listing from "../../Components/Listing";
 import Search from "../../Components/Search";
-
+import { useDispatch } from 'react-redux';
 // Hooks
 import { useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { getNotes } from "../../Redux/Notes/actions/notes";
+
 
 const Home = () => {
+  
   const notes = useSelector((state) => state.notes);
 
   return (
