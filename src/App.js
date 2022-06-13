@@ -18,12 +18,6 @@ const App = () => {
   useEffect(() => {
     dispatch(getNotes());
   }, [dispatch])
-  // const notes = useSelector((state) => state.notes);
-
-  // // Store Updated Notes in LocalStorage
-  // useEffect(() => {
-  //   localStorage.setItem("NOTES", JSON.stringify(notes));
-  // }, [notes]);
 
   return (
     <Root>

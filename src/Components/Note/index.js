@@ -10,9 +10,11 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 // Action Creators
-// import { removeNote } from "../../Redux/Notes/actions/notes";
+import { removeNote } from "../../Redux/Notes/actions/notes";
 
-const Note = ({ id, note, date }) => {
+import parse from 'html-react-parser';
+
+const Note = ({ id, text, date }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,7 +23,7 @@ const Note = ({ id, note, date }) => {
   };
 
   const deleteNote = () => {
-    // dispatch(removeNote(id));
+    dispatch(removeNote(id));
   };
 
   return (
@@ -41,7 +43,7 @@ const Note = ({ id, note, date }) => {
       </Head>
 
       <Body>
-        <Desc>{note}</Desc>
+        <Desc>{parse(text)}</Desc>
       </Body>
     </Container>
   );
