@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/daily-notes-react/static/css/main.1f0ee4ea.css",
-    "main.js": "/daily-notes-react/static/js/main.3d5fb89f.js",
+    "main.js": "/daily-notes-react/static/js/main.5d21348d.js",
     "static/media/pencil-circle-outline.svg": "/daily-notes-react/static/media/pencil-circle-outline.aef8872292efa5833c45f99a5d57f88d.svg",
     "index.html": "/daily-notes-react/index.html",
     "static/media/delete-circle-outline.svg": "/daily-notes-react/static/media/delete-circle-outline.21d623c8a9b1d086339c411dd97a7172.svg",
     "static/media/playlist-plus.svg": "/daily-notes-react/static/media/playlist-plus.bcfb3142cd8d8ab10f4ae33ec2886de4.svg",
     "static/media/format-list-text.svg": "/daily-notes-react/static/media/format-list-text.de734ab180fa7d29a06202a317d8fc17.svg",
     "main.1f0ee4ea.css.map": "/daily-notes-react/static/css/main.1f0ee4ea.css.map",
-    "main.3d5fb89f.js.map": "/daily-notes-react/static/js/main.3d5fb89f.js.map"
+    "main.5d21348d.js.map": "/daily-notes-react/static/js/main.5d21348d.js.map"
   },
   "entrypoints": [
     "static/css/main.1f0ee4ea.css",
-    "static/js/main.3d5fb89f.js"
+    "static/js/main.5d21348d.js"
   ]
 }
