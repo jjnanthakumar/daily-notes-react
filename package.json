@@ -1,5 +1,6 @@
 {
-  "name": "daily-diary-app",
+  "homepage": "http://jjnanthakumar.github.io/daily-notes-react",
+  "name": "daily-notes-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,6 +10,7 @@
     "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
     "firebase": "^9.8.3",
+    "gh-pages": "^4.0.0",
     "html-react-parser": "^1.4.14",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -27,7 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
