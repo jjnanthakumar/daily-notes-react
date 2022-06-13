@@ -10,7 +10,7 @@ import NotFound from "./Pages/NotFound";
 // Hooks
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, HashRouter } from "react-router-dom";
 import { getNotes } from "./Redux/Notes/actions/notes";
 
 const App = () => {
@@ -22,7 +22,6 @@ const App = () => {
   return (
     <Root>
       <Header />
-
       <Routes>
         <Route path="/" element={<Home />} />
 
@@ -35,6 +34,7 @@ const App = () => {
         <Route path="/*" element={<Navigate to="/not-found" replace={true} />} />
       </Routes>
     </Root>
+
   );
 };
 
