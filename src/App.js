@@ -9,8 +9,8 @@ import NotFound from "./Pages/NotFound";
 
 // Hooks
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Navigate, Route, Routes, HashRouter } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { getNotes } from "./Redux/Notes/actions/notes";
 
 const App = () => {
